@@ -2,8 +2,8 @@
     Authentication component Working!
 </p>
 <app-sign-in
-        (changeForm)="onFormChange($event)"
+        (changeToSignUp)="onFormChange($event)"
         *ngIf="signInSelected"></app-sign-in>
 <app-sign-up
-        (changeForm)="onFormChange($event)"
+        (changeToSignIn)="onFormChange($event)"
         *ngIf="signUpSelected"></app-sign-up>
