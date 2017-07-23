@@ -6,12 +6,12 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 export class SignInComponent {
 
-    @Output() changeToSignUp = new EventEmitter<boolean>();
+/*    @Output() changeToSignUp = new EventEmitter<boolean>();
 
     onSignUpSelected() {
         this.changeToSignUp.emit(true);
         console.log("Change to sign up");
 
-    }
+    }*/
 
 }
