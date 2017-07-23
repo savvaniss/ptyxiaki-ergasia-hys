@@ -4,4 +4,6 @@
 <app-sign-in
         (changeForm)="onFormChange($event)"
         *ngIf="signInSelected"></app-sign-in>
-<app-sign-up *ngIf="signUpSelected"></app-sign-up>
+<app-sign-up
+        (changeForm)="onFormChange($event)"
+        *ngIf="signUpSelected"></app-sign-up>
