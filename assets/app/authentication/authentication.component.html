@@ -1,5 +1,7 @@
 <p>
     Authentication component Working!
 </p>
-<app-sign-in></app-sign-in>
-<app-sign-up></app-sign-up>
+<app-sign-in
+        (changeForm)="onFormChange($event)"
+        *ngIf="signInSelected"></app-sign-in>
+<app-sign-up *ngIf="signUpSelected"></app-sign-up>
