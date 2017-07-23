@@ -5,6 +5,7 @@ import { AppComponent } from "./app.component";
 import { AuthenticationComponent} from "./authentication/authentication.component";
 import {SignInComponent} from "./authentication/sign-in/sign-in.component";
 import {SignUpComponent} from "./authentication/sign-up/sign-up.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -13,7 +14,10 @@ import {SignUpComponent} from "./authentication/sign-up/sign-up.component";
         SignInComponent,
         SignUpComponent
     ],
-    imports: [BrowserModule],
+    imports: [BrowserModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
