@@ -7,6 +7,8 @@
                         sign-up component working!
                     </p>
                     <p> If you already have an account <a [routerLink]="['/sign-in']">Sign-In</a> </p>
+                    <button class="btn btn-primary col-md-8 col-md-offset-2" *ngIf="fb" (click)="onFBSignUp()">Facebook</button>
+                    <br />
                     <form (ngSubmit)="onSubmit(f)"  #f="ngForm" [formGroup]="signUpForm">
 
                         <div class="form-group">
@@ -53,7 +55,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <button class="btn btn-success" type="submit" [disabled]="!signUpForm.valid">Submit!</button>
+                            <button class="btn btn-success col-md-8 col-md-offset-2" type="submit" [disabled]="!signUpForm.valid">Submit!</button>
                         </div>
                     </form>
                 </div>
