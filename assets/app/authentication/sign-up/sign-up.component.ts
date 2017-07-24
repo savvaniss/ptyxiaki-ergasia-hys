@@ -1,19 +1,25 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {NgForm, FormGroup, FormControl, Validators} from "@angular/forms";
+import { FacebookService, LoginResponse } from 'ngx-facebook';
+
 
 @Component({
     selector: 'app-sign-up',
     templateUrl: './sign-up.component.html',
     styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit{
+export class SignUpComponent implements OnInit {
     signUpForm: FormGroup;
- /*   @Output() changeToSignIn = new EventEmitter<boolean>();
 
-    onSignInSelected() {
-        this.changeToSignIn.emit(true);
-        console.log('change to sign in');
-    }*/
+    constructor( private fb: FacebookService) {
+
+        console.log('Initializing Facebook');
+        fb.init({
+            appId: 'We need an appId',
+            version: 'v2.9'
+        });
+
+    }
 
     ngOnInit() {
         this.signUpForm = new FormGroup({
@@ -31,5 +37,17 @@ export class SignUpComponent implements OnInit{
     onSubmit(form: NgForm) {
         console.log(form.form.value);
         this.signUpForm.reset();
+    }
+
+    onFBSignUp() {
+        this.fb.login()
+            .then((res: LoginResponse) => {
+                console.log('Logged in', res);
+            })
+            .catch(this.handleError);
+    }
+
+    private handleError(error) {
+        console.error('Error processing action', error);
     }
 }
