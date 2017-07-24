@@ -8,32 +8,44 @@
                     </p>
                     <p> If you already have an account <a [routerLink]="['/sign-in']">Sign-In</a> </p>
                     <form (ngSubmit)="onSubmit(f)"  #f="ngForm" [formGroup]="signUpForm">
+
                         <div class="form-group">
+
                             <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
+                                <div class="col-md-10 col-md-offset-1">
                                     <input type="text"
                                            class="form-control"
                                            placeholder="First Name"
                                            formControlName="firstname">
                                 </div>
+                            </div>
+
                                 <br />
-                                <div class="col-md-8 col-md-offset-2">
+
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
                                     <input type="text"
                                            class="form-control"
                                            placeholder="Last name"
                                            formControlName="lastname">
                                 </div>
+                            </div>
+
                                 <br />
-                                <div class="col-md-8 col-md-offset-2">
+
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
                                     <input type="email"
                                            class="form-control"
                                            placeholder="E-mail address"
                                            formControlName="email">
                                 </div>
                             </div>
-                            <br />
+
+                                <br />
+
                             <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
+                                <div class="col-md-10 col-md-offset-1">
                                     <input type="password"
                                            class="form-control"
                                            placeholder="Password"

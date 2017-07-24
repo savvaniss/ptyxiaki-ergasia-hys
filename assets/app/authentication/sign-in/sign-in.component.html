@@ -8,6 +8,33 @@
                     <p>
                         Sign-in or <a [routerLink]="['/sign-up']"> sign-up</a>
                     </p>
+                    <form (ngSubmit)="onSubmit(f)"  #f="ngForm" [formGroup]="signInForm">
+
+                        <div class="form-group">
+
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <input type="email"
+                                           class="form-control"
+                                           placeholder="E-mail address"
+                                           formControlName="email">
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <input type="password"
+                                           class="form-control"
+                                           placeholder="Password"
+                                           formControlName="password">
+                                </div>
+                            </div>
+                            <hr>
+                            <button class="btn btn-success col-md-8 col-md-offset-2" type="submit" [disabled]="!signInForm.valid">Submit!</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
