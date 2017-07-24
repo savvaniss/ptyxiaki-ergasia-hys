@@ -7,6 +7,8 @@ import {SignInComponent} from "./authentication/sign-in/sign-in.component";
 import {SignUpComponent} from "./authentication/sign-up/sign-up.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {routing} from "./app.routing";
+import {FacebookModule} from "ngx-facebook";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
     declarations: [
@@ -15,12 +17,15 @@ import {routing} from "./app.routing";
         SignInComponent,
         SignUpComponent
     ],
-    imports: [BrowserModule,
+    imports: [
+        BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        routing
+        routing,
+        HttpModule,
+        FacebookModule.forRoot()
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 
