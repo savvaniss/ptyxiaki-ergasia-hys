@@ -8,7 +8,10 @@
                     <p>
                         Sign-in or <a [routerLink]="['/sign-up']"> sign-up</a>
                     </p>
-                    <form (ngSubmit)="onSubmit(f)"  #f="ngForm" [formGroup]="signInForm">
+                    <form (ngSubmit)="onSubmit(f)"
+                            #f="ngForm"
+                            method="post"
+                            [formGroup]="signInForm" >
 
                         <div class="form-group">
 

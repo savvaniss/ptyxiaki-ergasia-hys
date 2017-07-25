@@ -12,11 +12,12 @@ export class SignUpComponent implements OnInit {
     signUpForm: FormGroup;
 
     constructor( private fb: FacebookService) {
-
+    //First we have to call fb.init() in order to make further calls to the facebook api
+        // the appId is necessary for facebook to accept the init.
         console.log('Initializing Facebook');
         fb.init({
             appId: 'We need an appId',
-            version: 'v2.9'
+            version: 'v2.10'
         });
 
     }
@@ -33,13 +34,14 @@ export class SignUpComponent implements OnInit {
 
         });
     }
-
+    //onSubmit gives us the user info when he submits.
     onSubmit(form: NgForm) {
         console.log(form.form.value);
         this.signUpForm.reset();
     }
 
-    onFBSignUp() {
+    //onFBLogin attempts to log the user in facebook via the app. It should return some basic information for the user
+    onFBLogin() {
         this.fb.login()
             .then((res: LoginResponse) => {
                 console.log('Logged in', res);
@@ -47,6 +49,7 @@ export class SignUpComponent implements OnInit {
             .catch(this.handleError);
     }
 
+    //catches the errors
     private handleError(error) {
         console.error('Error processing action', error);
     }
