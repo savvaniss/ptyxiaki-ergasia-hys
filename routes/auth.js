@@ -12,8 +12,7 @@ var User = require('../models/user');
 
 //post request for a user mean sign up (register a user)
 router.post('/signup', function (req, res, next) {
-    console.log(req.body.password);
-    console.log(req.body.email);
+    //get user data from request
     var user = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -22,6 +21,7 @@ router.post('/signup', function (req, res, next) {
         email: req.body.email,
         registrationMethod:'site'
     });
+    //save user to database
     user.save(function(err, result) {
         if (err) {
             return res.status(500).json({
@@ -29,6 +29,7 @@ router.post('/signup', function (req, res, next) {
                 error: err
             });
         }
+        //return created user object
         res.status(201).json({
             message: 'User created',
             obj: result
@@ -36,6 +37,39 @@ router.post('/signup', function (req, res, next) {
     });
 });
 
+//if we get a post request in signin then we need to create a token
+router.post('/signin', function(req, res, next) {
+    User.findOne({email: req.body.email}, function(err, user) {
+        //general mongoose error
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
+            });
+        }
+        //no user found
+        if (!user) {
+            return res.status(401).json({
+                title: 'Login failed',
+                error: {message: 'Invalid login credentials'}
+            });
+        }
+        //password dont mattch
+        if (!bcrypt.compareSync(req.body.password, user.password)) {
+            return res.status(401).json({
+                title: 'Login failed',
+                error: {message: 'Invalid login credentials'}
+            });
+        }
 
+        //succesfully logg in . create the token
+        var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
+        res.status(200).json({
+            message: 'Successfully logged in',
+            token: token,
+            userId: user._id
+        });
+    });
+});
 
 module.exports = router;
