@@ -2,3 +2,5 @@
 /.idea
 /typings
 npm-debug.log
+
+public/js/app/bundle\.js
