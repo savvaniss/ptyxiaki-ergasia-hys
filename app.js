@@ -14,7 +14,7 @@ var config = require('dotenv').config();
 var appRoutes = require('./routes/app');
 
 //routes for authentication
-var authRoutes= require ('/routes/auth')
+var authRoutes= require ('./routes/auth')
 
 var app = express();
 
